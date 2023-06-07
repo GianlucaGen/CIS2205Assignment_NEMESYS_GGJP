@@ -1,0 +1,61 @@
+@model PostViewModel
+
+@{
+    ViewData["Title"] = "Create Report";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if(@Model.UserID == ""){
+
+<div>You must be logged in to create a report.</div>
+
+}else{
+
+<form asp-action="Insert" id="form-action" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
+            <label asp-for="Post.Title" class="form-label"></label>
+            <input asp-for="Post.Title" class="form-control" required />
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
+            <label asp-for="Post.Location" class="form-label"></label>
+            <input asp-for="Post.Location" class="form-control" required />
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
+            <label asp-for="Post.SpotTime" class="form-label">Time Spotted</label>
+            <input asp-for="Post.SpotTime" class="form-control" required />
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
+            <label asp-for="Post.HazardType" class="form-label">Hazard Type</label>
+            <input asp-for="Post.HazardType" class="form-control" required />
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
+            <label asp-for="Post.Description" class="form-label"></label>
+            <textarea asp-for="Post.Description" class="form-control" rows="5" cols="40" required ></textarea>
+        </div>
+    </div>
+    <input type="hidden" asp-for="Post.UserID" class="form-control" required value=@Model.UserID/>
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10">
+	    <label asp-for="PhotoImage" class="col-md-2">Photo (Optional)</label>
+            <input type="file" asp-for="PhotoImage" class="form-control" />
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10 mt-3 mb-5">
+            <input type="Submit" id="form-button" class="btn btn-primary" value="Add Report" />
+        </div>
+    </div>
+</form>
+
+}
